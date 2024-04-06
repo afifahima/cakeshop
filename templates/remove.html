@@ -1,0 +1,11 @@
+{% for cart_item in cart_items %}
+    <div id="cart-item-{{ cart_item.id }}">
+        <!-- Display cart item details -->
+
+        <!-- Button/link to remove the item from the cart -->
+        <button class="remove-from-cart" data-cart-item-id="{{ cart_item.id }}">Remove from Cart</button>
+    </div>
+{% endfor %}
+
+<!-- Display total amount -->
+<div>Total Amount: <span id="total-amount">{{ total_amount }}</span></div>

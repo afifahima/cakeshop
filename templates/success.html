@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+ 
+{% block main_content %}
+<head>
+    <style>
+        .center{
+            position: absolute;
+            text-align: center;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <h3>
+            Thanks,Your Cake Will be in your Doorstep! <i class="fas fa-check-circle"></i>
+        </h3>
+        <h5>
+            <a href="{% url 'category' 'BC' %}">
+                Again?
+            </a>
+        </h5>
+    </div>
+</body>
+{% endblock main_content %}

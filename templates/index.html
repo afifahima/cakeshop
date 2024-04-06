@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Cake shop</title>
+    {%  load static  %}
+    <link rel="stylesheet" href="{% static 'css/file.css' %}">
+   
+
+    <!-- bootstrap links -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" ></script>
+    <script src="{% static 'js/my.js' %}"></script>
+    
+    
+
+    <!-- bootstrap links -->
+    <!-- fonts links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Uchen&display=swap" rel="stylesheet">
+    <!-- fonts links -->
+    <!-- icons links -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- icons links -->
+    <!-- animation links -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!-- animation links -->
+   
+
+</head>
+    <body id='bg'style="background-image:  url('{%static 'image/drip.jpg'%}');"
+    
+        <div class="all-content">
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-md" id="navbar">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#" id="logo"><img src="{%static 'image/logo.jpg'%}"alt="" width="50px">Cake Bakery</a>
+          
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+              <span><img src="{%static 'image/menu.png'%}" alt="" width="30px"></span>
+              
+            </button>
+          
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Home</a>
+                </li>
+                <!-- dropdown -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                     Product
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="{% url 'category' 'BC' %}" class="dropdown-item">Birthday Cake</a>
+                        <a href="{% url 'category' 'NC' %}" class="dropdown-item">Normal Cake</a>
+                        
+                    </div>
+                </li>
+                <!-- dropdown -->
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                     Sweet Cake
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="{%url 'profile' %}" class="dropdown-item">Profile</a>
+                        <a href="{% url 'orders' %}" class="dropdown-item">Orders</a>
+                        <a href="{%url 'logout' %}" class="dropdown-item">Logout</a>
+                        
+                        
+                    </div>
+                
+              </ul>
+              
+
+            </u1>
+            </div>
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link " href="{% url 'showcart' %}"><span class="badge bg-danger">{% if totalitem > 0 %} {{totalitem}} {% endif %}</span>Cart</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+              
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link" href="{%url 'customerregistration'%}">Registration</a>
+            </li>
+            </u1>
+        </div>
+          </nav>
+            
+          </body>
+          <!-- home section -->
+          <div class="home">
+            <div class="content">
+              <h3>Delicious
+                <br>Cakes Bakery
+              </h3>
+              <h2>Category <span class="changecontent"></span></h2>
+              <p>Sweet cake makes your celebration more memorable and special.  
+                 <br>We offer you a top quality cake and ingredients which will surely win your near and dear one's heart.  
+              </p>
+              <a href="{%url 'customerregistration'%}" class="btn">Order now</a>
+            </div>
+          </div>
+          <!-- home section ends -->
+          <!-- top cards section-->
+          <div class="container" id="box" >
+            <div class="row">
+              <div class="col-md-4 py-3 py-md-0">
+                <div class="card">
+                  <img src="{%static 'image/box1.jpg'%}" alt="" >
+                </div>
+              </div>
+                <div class="col-md-4 py-3 py-md-0">
+                  <div class="card">
+                    <img src="{%static 'image/box2.jpg'%}" alt="" >
+                  </div>
+                </div>
+               <div class="col-md-4 py-3 py-md-0">
+                   <div class="card">
+                     <img src="{%static 'image/box3.jpg'%}" alt="">
+                    </div>
+                </div>
+            </div>
+          </div>
+            <!-- top cards end -->
+            <div class="banner"    data-aos="fade-up"
+        data-aos-duration="1500">
+            <div class="content">
+                <h3>Delicious Cake</h3>
+                <h2>UPTO 50% OFF</h2>
+                <p>Were all your Special Occasion Begin</p>
+                <div id="btnorder"><button>Order Now</button></div>
+            </div>
+            <div class="img">
+                <img src="{%static 'image/banner-background.png'%}" alt="">
+            </div>
+        </div>
+            
+         <!-- product cards -->
+      <section id="product-cards"    data-aos="fade-up"
+      data-aos-duration="1500">
+        <div class="container">
+            <h1>NORMAL CAKES</h1>
+            <div class="row" style="margin-top:50px;">
+               <div class="col-md-3 py-3 py-md-0">
+                <div class="card">
+                    <div class="overlay">
+                        <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}" alt="" width="30px"></i></button>
+                        <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}" alt="" width="30px"></i></button>
+                        <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src= "{%static 'image/cart-plus-solid.svg'%}"alt="" width="30px"></i></button>
+                    </div>
+                    <img src="{%static 'image/cream cakes.jpg'%}" alt="">
+                    <div class="card-body">
+                        <h3>Ice Cream Cake</h3>
+                        <div class="star">
+                          <i class="bx bxs-star checked"></i>
+                          <i class="bx bxs-star checked"></i>
+                          <i class="bx bxs-star checked"></i>
+                          <i class="bx bxs-star "></i>
+                          <i class="bx bxs-star "></i>
+                        </div>
+                        <p>Ready to eat a slice of heaven</p>
+                        <h6>Rs.480 <span></span></h6>
+                    </div>
+                </div>
+               </div>
+               <div class="col-md-3 py-3 py-md-0">
+                <div class="card">
+                    <div class="overlay">
+                        <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}" alt="" width="30px"></i></button>
+                        <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}" alt="" width="30px"></i></button>
+                        <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{%static 'image/cart-plus-solid.svg'%}" alt="" width="30px"></i></button>
+                    </div>
+                    <img src="{%static 'image/chocolate.jpg'%}" alt="" height="210px">
+                    <div class="card-body">
+                        <h3>Choco Cake</h3>
+                        <div class="star">
+                          <i class="bx bxs-star checked"></i>
+                          <i class="bx bxs-star checked"></i>
+                          <i class="bx bxs-star checked"></i>
+                          <i class="bx bxs-star "></i>
+                          <i class="bx bxs-star "></i>
+                        </div>
+                        <p>Simply divine</p>
+                        <h6>Rs.979 </h6>
+                    </div>
+                </div>
+               </div>
+               <div class="col-md-3 py-3 py-md-0">
+                <div class="card">
+                    <div class="overlay">
+                        <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}" alt="" width="30px"></i></button>
+                        <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}" alt="" width="30px"></i></button>
+                        <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{%static 'image/cart-plus-solid.svg'%}" alt="" width="30px"></i></button>
+                    </div>
+                    <img src="{%static 'image/rain.jpg'%}" alt="" height="180px">
+                    <div class="card-body">
+                        <h3>Rainbow cake</h3>
+                        <div class="star">
+                          <i class="bx bxs-star checked"></i>
+                          <i class="bx bxs-star checked"></i>
+                          <i class="bx bxs-star checked"></i>
+                          <i class="bx bxs-star checked"></i>
+                          <i class="bx bxs-star "></i>
+                        </div>
+                        <p>Layers of happiness in every colorful slice</p>
+                        <h6>Rs.678 </h6>
+                    </div>
+                </div>
+               </div>
+               <div class="col-md-3 py-3 py-md-0">
+                <div class="card">
+                    <div class="overlay">
+                        <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}" alt="" width="30px"></i></button>
+                        <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}" alt="" width="30px"></i></button>
+                        <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{%static 'image/cart-plus-solid.svg'%}" alt="" width="30px"></i></button>
+                    </div>
+                    <img src="{%static 'image/fruit.jpg'%}" alt="" height="180px">
+                    <div class="card-body">
+                        <h3>Fruit Cake</h3>
+                        <div class="star">
+                          <i class="bx bxs-star checked"></i>
+                          <i class="bx bxs-star checked"></i>
+                          <i class="bx bxs-star checked"></i>
+                          <i class="bx bxs-star checked"></i>
+                          <i class="bx bxs-star checked"></i>
+                        </div>
+                        <p>It is the season of fruit cakes!</p>
+                        <h6>Rs.500 </h6>
+                    </div>
+                </div>
+               </div>
+            </div>
+
+
+
+
+
+
+            <div class="row" style="margin-top:50px;"    data-aos="fade-up"
+            data-aos-duration="1500">
+                <div class="col-md-3 py-3 py-md-0">
+                 <div class="card">
+                     <div class="overlay">
+                         <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}" alt="" width="30px"></i></button>
+                         <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}" alt="" width="30px"></i></button>
+                         <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{%static 'image/cart-plus-solid.svg'%}" alt="" width="30px"></i></button>
+                     </div>
+                     <img src="{%static 'image/berry.jpeg'%}" alt="">
+                     <div class="card-body">
+                         <h3>Strawberry cake</h3>
+                         <div class="star">
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star "></i>
+                           <i class="bx bxs-star "></i>
+                         </div>
+                         <p>Whenever you have a heartbreak, munch strawberry cake! </p>
+                         <h6>Rs.529 </h6>
+                     </div>
+                 </div>
+                </div>
+                <div class="col-md-3 py-3 py-md-0">
+                 <div class="card">
+                     <div class="overlay">
+                         <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}" alt="" width="30px"></i></button>
+                         <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}" alt="" width="30px"></i></button>
+                         <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{%static 'image/cart-plus-solid.svg'%}" alt="" width="30px"></i></button>
+                     </div>
+                     <img src= "{%static 'image/vannila.jpg'%}"alt="" height="220px">
+                     <div class="card-body">
+                         <h3>Vannila Cake</h3>
+                         <div class="star">
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star "></i>
+                           <i class="bx bxs-star "></i>
+                         </div>
+                         <p>Celebration of Life</p>
+                         <h6>Rs.899 </h6>
+                     </div>
+                 </div>
+                </div>
+                <div class="col-md-3 py-3 py-md-0">
+                 <div class="card">
+                     <div class="overlay">
+                         <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}"alt="" width="30px"></i></button>
+                         <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}" alt="" width="30px"></i></button>
+                         <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{%static 'image/cart-plus-solid.svg'%}" alt="" width="30px"></i></button>
+                     </div>
+                     <img src="{%static 'image/black.jpg'%}"  alt="" height="180px">
+                     <div class="card-body">
+                         <h3>Black Forest Cake</h3>
+                         <div class="star">
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star "></i>
+                         </div>
+                         <p>Sweetness overload!</p>
+                         <h6>Rs.450 </h6>
+                     </div>
+                 </div>
+                </div>
+                <div class="col-md-3 py-3 py-md-0">
+                 <div class="card">
+                     <div class="overlay">
+                         <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}"alt="" width="30px"></i></button>
+                         <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}" alt="" width="30px"></i></button>
+                         <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{%static 'image/cart-plus-solid.svg'%}" alt="" width="30px"></i></button>
+                     </div>
+                     <img src="{%static 'image/red.jpg'%}" alt="" height="200px">
+                     <div class="card-body">
+                         <h3>Red Velvet Cake</h3>
+                         <div class="star">
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star checked"></i>
+                         </div>
+                         <p>Life is sweeter with a slice of red velvet cake in hand</p>
+                         <h6>Rs.660 </h6>
+                     </div>
+                 </div>
+                </div>
+             </div>
+        </div>
+      </section>
+
+
+      <section id="product-cards"    data-aos="fade-up"
+      data-aos-duration="1500">
+        <div class="container">
+            <h1>BIRTHDAY CAKES</h1>
+            <div class="row" style="margin-top: 50px;">
+                <div class="col-md-3 py-3 py-md-0">
+                    <div class="card">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}"alt="" width="30px"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}" alt="" width="30px"></i></button>
+                             <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{%static 'image/cart-plus-solid.svg'%}" alt="" width="30px"></i></button>
+                        </div>
+                        <img src="{%static 'image/kit.jpg'%}" alt="">
+                        <div class="card-body">
+                            <h3>Kit Kat cake</h3>
+                            <div class="star">
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                            </div>
+                            <p>Every birthday needs a sweet treat</p>
+                            <h6>Rs.789</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 py-3 py-md-0">
+                    <div class="card">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}" alt="" width="30px"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}"alt="" width="30px"></i></button>
+                             <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{%static 'image/cart-plus-solid.svg'%}" alt="" width="30px"></i></button>
+                        </div>
+                        <img src="{%static 'image/pin.jpg'%}" alt="" height="160px">
+                        <div class="card-body">
+                            <h3>Pinata cake</h3>
+                            <div class="star">
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                            </div>
+                            <p>Knock Knock Pinata Cake with Hammer for Birthday</p>
+                            <h6>Rs.900 </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 py-3 py-md-0">
+                    <div class="card">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}" alt="" width="30px"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}" alt="" width="30px"></i></button>
+                             <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{%static 'image/cart-plus-solid.svg'%}" alt="" width="30px"></i></button>
+                        </div>
+                        <img src="{%static 'image/pull.jpg'%}" alt="" height="140px">
+                        <div class="card-body">
+                            <h3>Pull Me Up Cake</h3>
+                            <div class="star">
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                            </div>
+                            <p>Light Up Your Celebration with Sweet Cake Pull Me Up Cakes for Anniversary</p>
+                            <h6>Rs.788 </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 py-3 py-md-0">
+                    <div class="card">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}" alt="" width="30px"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}" alt="" width="30px"></i></button>
+                             <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{%static 'image/cart-plus-solid.svg'%}" alt="" width="30px"></i></button>
+                        </div>
+                        <img src="{%static 'image/cup cake.jpg'%}" alt="" height="160px">
+                        <div class="card-body">
+                            <h3>Cup cake</h3>
+                            <div class="star">
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                            </div>
+                            <p> Cupcakes are muffins that believed in miracles. </p>
+                            <h6>Rs.678</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:50px;"    data-aos="fade-up"
+            data-aos-duration="1500">
+                <div class="col-md-3 py-3 py-md-0">
+                 <div class="card">
+                     <div class="overlay">
+                         <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}" alt="" width="30px"></i></button>
+                         <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}" alt="" width="30px"></i></button>
+                         <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{%static 'image/cart-plus-solid.svg'%}" alt="" width="30px"></i></button>
+                     </div>
+                     <img src="{%static 'image/truffle.jpg'%}" alt="" height="250px" >
+                     <div class="card-body">
+                         <h3>Choco Truffle</h3>
+                         <div class="star">
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star checked"></i>
+                           <i class="bx bxs-star checked"></i>
+                         </div>
+                         <p>A foretaste of heaven </p>
+                         <h6>799</h6>
+                     </div>
+                 </div>
+                </div>
+                <div class="col-md-3 py-3 py-md-0">
+                    <div class="card">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}" alt="" width="30px"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}" alt="" width="30px"></i></button>
+                             <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{%static 'image/cart-plus-solid.svg'%}" alt="" width="30px"></i></button>
+                        </div>
+                        <img src="{%static 'image/pop.jpg'%}" alt=""height="230px">
+                        <div class="card-body">
+                            <h3>Popsicle Cake</h3>
+                            <div class="star">
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                            </div>
+                            <p>Every bite of a cakesicle is an adventure</p>
+                            <h6>Rs.199 </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 py-3 py-md-0">
+                    <div class="card">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}" alt="" width="30px"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}" alt="" width="30px"></i></button>
+                             <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{%static 'image/cart-plus-solid.svg'%}" alt="" width="30px"></i></button>
+                        </div>
+                        <img src="{%static 'image/don.jpg'%}" alt="" height="230px">
+                        <div class="card-body">
+                            <h3>Donut cake</h3>
+                            <div class="star">
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                            </div>
+                            <p>Donut underestimate the power of a good pastry.</p>
+                            <h6>Rs.566 </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 py-3 py-md-0">
+                    <div class="card">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Quick View"><i><img src="{%static 'image/user-solid.svg'%}" alt="" width="30px"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="{%static 'image/heart-solid.svg'%}" alt="" width="30px"></i></button>
+                             <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{%static 'image/cart-plus-solid.svg'%}" alt="" width="30px"></i></button>
+                        </div>
+                        <img src="{%static 'image/oreo.jpg'%}" alt="" height="208px">
+                        <div class="card-body">
+                            <h3>Oreo cake</h3>
+                            <div class="star">
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                                <i class="bx bxs-star checked"></i>
+                            </div>
+                            <p>Oreo lover for life Feeling crumbly? An Oreo can fix that</p>
+                            <h6>Rs.990 </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <!-- product cards end-->
+
+
+      <!-- gallary -->
+      <section id="gallary"    data-aos="fade-up"
+      data-aos-duration="1500">
+        <div class="container">
+            <h1>OUR GALLARY</h1>
+            <div class="row" style="margin-top: 30px;">
+                <div class="col-md-4 py-3 py-md-0">
+                    <div class="card">
+                        <div class="overlay">
+                            <h3 class="text-center">Donuts</h3>
+                        </div>
+                        <img src="{%static 'image/donutss.jpg'%}" alt="">
+                    </div>
+                </div>
+                <div class="col-md-4 py-3 py-md-0">
+                    <div class="card">
+                        <div class="overlay">
+                            <h3 class="text-center">Ice Cream</h3>
+                        </div>
+                        <img src= "{%static 'image/icecream.jpg'%}"alt=""height="350px">
+                    </div>
+                </div>
+                <div class="col-md-4 py-3 py-md-0">
+                    <div class="card">
+                        <div class="overlay">
+                            <h3 class="text-center">Cup Cake</h3>
+                        </div>
+                        <img src="{%static 'image/cup.jpg'%}" alt="">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row" style="margin-top: 30px;"    data-aos="fade-up"
+            data-aos-duration="1500">
+                <div class="col-md-4 py-3 py-md-0">
+                    <div class="card">
+                        <div class="overlay">
+                            <h3 class="text-center">Brownie Cake</h3>
+                        </div>
+                        <img src="{%static 'image/brownie.jpg'%}" alt="" height="400px">
+                    </div>
+                </div>
+                <div class="col-md-4 py-3 py-md-0">
+                    <div class="card">
+                        <div class="overlay">
+                            <h3 class="text-center">Plum Cake</h3>
+                        </div>
+                        <img src="{%static 'image/plum.jpg'%}" alt=""height="400px">
+                    </div>
+                </div>
+                <div class="col-md-4 py-3 py-md-0">
+                    <div class="card">
+                        <div class="overlay">
+                            <h3 class="text-center">Slice Cake</h3>
+                        </div>
+                        <img src="{%static 'image/slice.jpg'%}" alt=""height="400px">
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+      <!-- gallary -->
+
+
+
+      <!-- about -->
+      <div class="container" id="about"    data-aos="fade-up"
+      data-aos-duration="1500">
+        <h1>ABOUT US</h1>
+        <div class="row">
+            <div class="col-md-6 py-3 py-md-0">
+                <div class="card">
+                    <img src= "{%static 'image/about.jpg'%}"alt="" height="500px" >
+                </div>
+            </div>
+            <div class="col-md-6 py-3 py-md-0">
+                    <p>
+                        We at Sweet Cake specialize in Desserts & Cakes. we believe in "Quality in our Edge", from selecting the ingredients around India to the final exqusite creation that "Bring you smiles for Sure"
+                        
+                        Our cakes & Desserts receive a lot of compliments and are complimented by wide range of exclusive desserts.
+                        
+                        Our theme based Creative Cakes, Cake pop , Cup Cakes and Desserts for Parities, make you Party Unique and Inevitable. We spend more time in understanding customers expectation,
+                        
+                        So we Perfectly Personalize to the Needs. We also offer a variety of bite sized treats. Everything is made from scratch in house and with locally sourced ingredients when possible.
+
+                        Sweet Cake is not a retail bakery. We are by appointment only. This way we can give each of our clients and their order the care and attention they deserve. We love working with our clients to make their dessert dreams come true!
+                        We have unveiled our ordering service recently. Now you can order Cakes, Pastries and Cookies online from our store. We only deliver online within 2 km radius of our shop. For beyond 2 km, please contact the shop. Please note that in case of Delivery order from online, shipping rates will be charged based on distance of the delivery address from our shop, like, with 1 Km radius we don't charge anything for delivery of products. Thanks for visiting our store, have a great day ahead!</p>                
+
+                
+            </div>
+        </div>
+      </div>
+      <!-- about -->
+
+
+
+      
+
+
+      <!-- footer -->
+      <footer id="footer"    data-aos="fade-up"
+      data-aos-duration="1500">
+        <h1 class="text-center">Sweet Cake</h1>
+        <p class="text-center">A Slice of Heaven</p>
+        <div class="icons text-center">
+            <i class="bx bxl-twitter"></i>
+            <i class="bx bxl-facebook"></i>
+            <i class="bx bxl-google"></i>
+            <i class="bx bxl-skype"></i>
+            <i class="bx bxl-instagram"></i>
+        </div>
+        
+        
+      </footer>
+      <!-- footer -->
+
+      <a href="#" class="arrow"><i><img src="{%static 'image/up-arrow.png'%}"alt="" width="50px"></i></a>
+
+
+
+    </div>
+
+
+
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
+</body>
+</html>
+          
+          
+          
+
+
+        
+    
+
+
+    
+</body>
+</html>
